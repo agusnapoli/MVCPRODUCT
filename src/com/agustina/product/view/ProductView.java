@@ -1,5 +1,6 @@
 package com.agustina.product.view;
 
+import com.agustina.product.model.entities.Categoria;
 import com.agustina.product.model.entities.Product;
 
 import java.util.ArrayList;
@@ -13,13 +14,16 @@ public class ProductView {
 
         Scanner scann = new Scanner(System.in);
 
-        System.out.println("Ingrese id, precio y nombre del producto");
+        System.out.println("Ingrese id, precio, nombre y categoria del producto");
         int id = scann.nextInt();
         int price = scann.nextInt();
         scann.nextLine();
+        String cat = scann.nextLine();
         String name=  scann.nextLine();
 
-        Product producto = new Product(id,price,name);
+        Categoria ca = new Categoria(cat);
+
+        Product producto = new Product(id,price,name,ca);
         return producto;
     }
 
@@ -28,6 +32,8 @@ public class ProductView {
         System.out.println("producto.getId() = " + producto.getId());
         System.out.println("producto.getPrice() = " + producto.getPrice());
         System.out.println("producto.getName() = " + producto.getName());
+        System.out.println("producto.getCategoria() = " + producto.getCategoria().getName());
+
     }
 
     public Integer removeProduct ()
